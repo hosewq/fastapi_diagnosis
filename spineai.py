@@ -109,7 +109,7 @@ def get_prediction(model_path, input_features):
 	te = TextEmbeddings(input_data[0], input_data[1], input_data[2])
 	embed_df = te.text_embeddings()
 
-	print(embed_df.head())
+	#print(embed_df.head())
 
 	tmp = embed_df.values.tolist()[0]
 	tmp2 = input_data[3:]
@@ -176,12 +176,12 @@ def get_diagnosis(predictions):
 	pred_result = {}
 	diagnosis_dict = {"classes":predictions[0], "prob":predictions[1]}
 
-	print(diagnosis_dict)
+	#print(diagnosis_dict)
 
 	classes = get_class_name()
-	print(classes)
-	print(type(classes))
-	print(classes[0])
+	#print(classes)
+	#print(type(classes))
+	#print(classes[0])
 
 	for i in range(len(diagnosis_dict["classes"])):
 		tmp = classes[diagnosis_dict["classes"][i]]
