@@ -5,7 +5,7 @@ from fastapi.encoders import jsonable_encoder
 
 import json
 import spineai as sp
-import assistant_api as assistant
+import assistant_api as aa
 
 app = FastAPI()
 
@@ -46,9 +46,9 @@ class LLMRequest(BaseModel):
 async def get_llm_response(req: LLMRequest):
 	json_input = json.dumps(req.json_input)
 
-	diagnosis, probability = assistant.process_json(json_input)
+	diagnosis, probability = aa.process_json(json_input)
 	
-	assistant_chain = assistant.AssistantChatChain()
+	assistant_chain = aa.AssistantChatChain()
 
 	question = diagnosis[0]+"에 대해 한국어로 알려줘."
 	response = assistant_chain.invoke(question)
